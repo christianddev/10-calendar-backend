@@ -16,8 +16,10 @@ const getEvent = async (req, res = response) => {
     console.log("error - getEvent(): ", error);
     res.status(500).json({
       ok: false,
-      msg: {
-        error: "contact the administrator",
+      errors: {
+        admin: {
+          msg: "contact the administrator",
+        },
       },
     });
   }
@@ -39,8 +41,10 @@ const createEvent = async (req, res = response) => {
     console.log("error - createEvent(): ", error);
     res.status(500).json({
       ok: false,
-      msg: {
-        error: "contact the administrator",
+      errors: {
+        admin: {
+          msg: "contact the administrator",
+        },
       },
     });
   }
@@ -53,18 +57,22 @@ const updateEvent = async (req, res = response) => {
     const event = await Event.findById(id);
     if (!event) {
       return res.status(404).json({
-        ok: true,
-        msg: {
-          error: "event not found",
+        ok: false,
+        errors: {
+          event: {
+            msg: "event not found",
+          },
         },
       });
     }
 
     if (event.user?.toString() !== uid) {
       return res.status(401).json({
-        ok: true,
-        msg: {
-          error: "you do not have permission to edit this event",
+        ok: false,
+        errors: {
+          event: {
+            msg: "you do not have permission to edit this event",
+          },
         },
       });
     }
@@ -84,8 +92,10 @@ const updateEvent = async (req, res = response) => {
     console.log("error - updateEvent(): ", error);
     res.status(500).json({
       ok: false,
-      msg: {
-        error: "contact the administrator",
+      errors: {
+        admin: {
+          msg: "contact the administrator",
+        },
       },
     });
   }
@@ -98,18 +108,22 @@ const deleteEvent = async (req, res = response) => {
     const event = await Event.findById(id);
     if (!event) {
       return res.status(404).json({
-        ok: true,
-        msg: {
-          error: "event not found",
+        ok: false,
+        errors: {
+          event: {
+            msg: "event not found",
+          },
         },
       });
     }
 
     if (event.user?.toString() !== uid) {
       return res.status(401).json({
-        ok: true,
-        msg: {
-          error: "you do not have permission to delete this event",
+        ok: false,
+        errors: {
+          event: {
+            msg: "you do not have permission to delete this event",
+          },
         },
       });
     }
@@ -128,8 +142,10 @@ const deleteEvent = async (req, res = response) => {
     console.log("error - deleteEvent(): ", error);
     res.status(500).json({
       ok: false,
-      msg: {
-        error: "contact the administrator",
+      errors: {
+        admin: {
+          msg: "contact the administrator",
+        },
       },
     });
   }

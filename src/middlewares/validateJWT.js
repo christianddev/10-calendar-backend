@@ -3,12 +3,13 @@ const jwt = require("jsonwebtoken");
 
 const validateJWT = (req, res = response, next) => {
   const token = req.header("x-token");
-  console.log("token", token);
   if (!token) {
     return res.status(400).json({
       ok: false,
-      msg: {
-        error: "send request token",
+      errors: {
+        token: {
+          msg: "send request token",
+        },
       },
     });
   }
@@ -18,11 +19,13 @@ const validateJWT = (req, res = response, next) => {
     req.uid = uid;
     req.name = name;
   } catch (error) {
-    console.log("error - validateJWT(): ", error);
+    console.log("error - validateJWT(): ", error?.name, error?.message);
     return res.status(401).json({
       ok: false,
-      msg: {
-        error: "invalid token",
+      errors: {
+        token: {
+          msg: "invalid token",
+        },
       },
     });
   }
