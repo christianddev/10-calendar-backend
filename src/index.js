@@ -17,6 +17,9 @@ app.use(express.json());
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/events", require("./routes/events"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+});
 
 app.listen(port, () => {
   console.log("Server ON, port:", port);
