@@ -6,7 +6,7 @@ const dbConnection = async () => {
     await mongoose.connect(uri);
     console.log('DB online')
   } catch (error) {
-    console.log("error - dbConnection: ", error);
+    console.error("dbConnection: ", error);
     throw new Error("Error when initializing DB");
   }
 };

@@ -13,7 +13,7 @@ const generateJWT = (uid, name) => {
           err ? reject("the token has not been generated") : resolve(token)
       );
     } catch (error) {
-      console.log("error - generateJWT(): ", error);
+      console.error("generateJWT: ", error);
     }
   });
 };

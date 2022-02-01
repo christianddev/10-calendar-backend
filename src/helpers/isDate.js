@@ -8,7 +8,7 @@ const isDate = (value) => {
     const date = moment(value)
     return date.isValid()
   } catch (error) {
-    console.log('error')
+    console.error('isDate', error)
     return false
   }
 };

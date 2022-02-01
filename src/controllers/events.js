@@ -13,7 +13,7 @@ const getEvent = async (req, res = response) => {
       },
     });
   } catch (error) {
-    console.log("error - getEvent(): ", error);
+    console.error("getEvent: ", error);
     res.status(500).json({
       ok: false,
       errors: {
@@ -38,7 +38,7 @@ const createEvent = async (req, res = response) => {
       },
     });
   } catch (error) {
-    console.log("error - createEvent(): ", error);
+    console.error("createEvent: ", error);
     res.status(500).json({
       ok: false,
       errors: {
@@ -89,7 +89,7 @@ const updateEvent = async (req, res = response) => {
       },
     });
   } catch (error) {
-    console.log("error - updateEvent(): ", error);
+    console.error("updateEvent: ", error);
     res.status(500).json({
       ok: false,
       errors: {
@@ -139,7 +139,7 @@ const deleteEvent = async (req, res = response) => {
       },
     });
   } catch (error) {
-    console.log("error - deleteEvent(): ", error);
+    console.error("deleteEvent: ", error);
     res.status(500).json({
       ok: false,
       errors: {

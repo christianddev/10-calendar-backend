@@ -30,7 +30,7 @@ const createUser = async (req, res = response) => {
       token,
     });
   } catch (error) {
-    console.log("error - createUser(): ", error);
+    console.error("createUser: ", error);
     res.status(500).json({
       ok: false,
       errors: {
@@ -77,7 +77,7 @@ const loginUser = async (req, res = response) => {
       token,
     });
   } catch (error) {
-    console.log("error - loginUser(): ", error);
+    console.error("loginUser: ", error);
     res.status(500).json({
       ok: false,
       errors: {
